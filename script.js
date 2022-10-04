@@ -50,12 +50,6 @@ function timeTracker() {
 
 timeTracker();
 
-// You need to get the current hour of the user's local time
-// If current time is > timebllock time then it should greeen future
-//If its == to each other then its red or present
-//if current time is less than time block time then its past --grey
-
-//
 $('.description').val(localStorage.getItem('hour'))
 
 $(document).ready(function () {
