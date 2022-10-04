@@ -4,6 +4,7 @@ var container = document.querySelector('.container')
 for (var time = 9; time < 17; time++) {
     var row = document.createElement("div")
     row.classList.add("row")
+    row.setAttribute("id", "hour-"+time);
     container.append(row)
     var hour = document.createElement("div")
     hour.setAttribute('class', 'hour col-1')
@@ -26,14 +27,14 @@ function timeTracker() {
     var timeNow = moment().hour();
 
     $(".row").each(function () {
-        var blockTime = parseInt($(this).attr("id", time).split("hour")[1]);
+        var blockTime = parseInt($(this).attr("id").split("-")[1]);
 
-        if (time < timeNow) {
+        if (blockTime < timeNow) {
             $(this).removeClass("future");
             $(this).removeClass("present");
             $(this).addClass("past");
         }
-        else if (time === timeNow) {
+        else if (blockTime === timeNow) {
             $(this).removeClass("past");
             $(this).removeClass("future");
             $(this).addClass("present");
