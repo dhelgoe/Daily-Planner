@@ -21,7 +21,30 @@ var today = moment();
 $("#currentDay").text(today.format("MMM Do, YYYY"));
 
 
+function timeTracker() {
+    var timeNow = moment().hour();
 
+    $("#currentDay").each(function () {
+        var blockTime = parseInt($(this).attr("id").split("hour")[1]);
+
+        if (hour < timeNow) {
+            $(this).removeClass("future");
+            $(this).removeClass("present");
+            $(this).addClass("past");
+        }
+        else if (hour === timeNow) {
+            $(this).removeClass("past");
+            $(this).removeClass("future");
+            $(this).addClass("present");
+        }
+        else {
+            $(this).removeClass("present");
+            $(this).removeClass("past");
+            $(this).addClass("future");
+
+        }
+    })
+}
 
 // You need to get the current hour of the user's local time
 // If current time is > timebllock time then it should greeen future
