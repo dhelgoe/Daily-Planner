@@ -1,5 +1,6 @@
 var container = document.querySelector('.container')
 
+
 for (var time = 9; time < 17; time++) {
     var row = document.createElement("div")
     row.classList.add("row")
@@ -24,15 +25,15 @@ $("#currentDay").text(today.format("MMM Do, YYYY"));
 function timeTracker() {
     var timeNow = moment().hour();
 
-    $("#currentDay").each(function () {
-        var blockTime = parseInt($(this).attr("id").split("hour")[1]);
+    $(".row").each(function () {
+        var blockTime = parseInt($(this).attr("id", time).split("hour")[1]);
 
-        if (hour < timeNow) {
+        if (time < timeNow) {
             $(this).removeClass("future");
             $(this).removeClass("present");
             $(this).addClass("past");
         }
-        else if (hour === timeNow) {
+        else if (time === timeNow) {
             $(this).removeClass("past");
             $(this).removeClass("future");
             $(this).addClass("present");
@@ -46,6 +47,8 @@ function timeTracker() {
     })
 }
 
+timeTracker();
+
 // You need to get the current hour of the user's local time
 // If current time is > timebllock time then it should greeen future
 //If its == to each other then its red or present
@@ -53,3 +56,11 @@ function timeTracker() {
 
 //
 $('.description').val(localStorage.getItem('hour'))
+
+$(document).ready(function () {
+    $(".saveBtn").on("click", function () {
+        var text = $(this).siblings(".description").val();
+        var time = $(this).parent().attr("id");
+        localStorage.setItem(time, text);
+    })
+})
