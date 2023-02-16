@@ -1,15 +1,16 @@
 var container = document.querySelector('.container')
 
-
-for (var time = 9; time < 17; time++) {
+for (var time = 9; time < 18; time++) {
+    if (time === 12) continue; // skip 12pm
+    var hour = time > 12 ? time - 12 + "pm" : time + "am";
     var row = document.createElement("div")
     row.classList.add("row")
     row.setAttribute("id", "hour-"+time);
     container.append(row)
-    var hour = document.createElement("div")
-    hour.setAttribute('class', 'hour col-1')
-    hour.textContent = time
-    row.append(hour)
+    var hourEl = document.createElement("div")
+    hourEl.setAttribute('class', 'hour col-1')
+    hourEl.textContent = hour
+    row.append(hourEl)
     var textarea = document.createElement("textarea")
     textarea.setAttribute('class', 'col-10 description')
     row.append(textarea)
@@ -21,7 +22,6 @@ for (var time = 9; time < 17; time++) {
 
 var today = moment();
 $("#currentDay").text(today.format("MMM Do, YYYY"));
-
 
 function timeTracker() {
     var timeNow = moment().hour();
@@ -59,3 +59,4 @@ $(document).ready(function () {
         localStorage.setItem(time, text);
     })
 })
+
