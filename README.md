@@ -1,6 +1,6 @@
 # 05 Third-Party APIs: Work Day Scheduler
 
-Day Planner is a simple calendar application that allows the user to save events for each hour of the day
+Day Planner is a simple calendar application that allows the user to save events for each hour of the day. As the day goes by, past hours will show gray, as the future hours will show green with the current hour showing red.
 
 ## Links
 Live site: file:///C:/Users/derek/Desktop/Challenges/Planner/index.html
